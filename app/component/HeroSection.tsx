@@ -186,7 +186,7 @@ Budget: ${data.budget || "Not specified"}`;
       </section>
 
       {showQuoteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center p-6 border-b border-gray-200">
               <h3 className="text-2xl font-bold text-gray-800">
@@ -203,12 +203,12 @@ Budget: ${data.budget || "Not specified"}`;
             <form onSubmit={handleSubmit(onSubmit)} className="p-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
-                    className={`w-full px-4 py-3 border ${
+                    className={`w-full px-4 py-3 border  text-black ${
                       errors.name ? "border-red-500" : "border-gray-300"
                     } rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent`}
                     placeholder="Enter your full name"
@@ -222,12 +222,12 @@ Budget: ${data.budget || "Not specified"}`;
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">
                     Email Address *
                   </label>
                   <input
                     type="email"
-                    className={`w-full px-4 py-3 border ${
+                    className={`w-full px-4 py-3 border text-gray-900 ${
                       errors.email ? "border-red-500" : "border-gray-300"
                     } rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent`}
                     placeholder="Enter your email"
@@ -241,12 +241,12 @@ Budget: ${data.budget || "Not specified"}`;
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">
                     Phone Number *
                   </label>
                   <input
                     type="tel"
-                    className={`w-full px-4 py-3 border ${
+                    className={`w-full px-4 py-3 border text-gray-900 ${
                       errors.phone ? "border-red-500" : "border-gray-300"
                     } rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent`}
                     placeholder="Enter your phone number"
@@ -260,16 +260,18 @@ Budget: ${data.budget || "Not specified"}`;
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">
                     Service Required *
                   </label>
                   <select
-                    className={`w-full px-4 py-3 border ${
+                    className={`w-full px-4 py-3 border text-gray-900 ${
                       errors.service ? "border-red-500" : "border-gray-300"
                     } rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent`}
                     {...register("service")}
                   >
-                    <option value="">Select a service</option>
+                    <option className="text-[#333]" value="">
+                      Select a service
+                    </option>
                     {services.map((service) => (
                       <option key={service} value={service}>
                         {service}
@@ -284,50 +286,62 @@ Budget: ${data.budget || "Not specified"}`;
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">
                     Project Timeline
                   </label>
                   <select
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 text-black focus:border-transparent"
                     {...register("timeline")}
                   >
-                    <option value="">Select timeline</option>
-                    <option value="Rush (1-3 days)">Rush (1-3 days)</option>
-                    <option value="Standard (1 week)">Standard (1 week)</option>
-                    <option value="Flexible (2+ weeks)">
+                    <option className="text-[#333]" value="">
+                      Select timeline
+                    </option>
+                    <option className="text-[#333]" value="Rush (1-3 days)">
+                      Rush (1-3 days)
+                    </option>
+                    <option className="text-[#333]" value="Standard (1 week)">
+                      Standard (1 week)
+                    </option>
+                    <option className="text-[#333]" value="Flexible (2+ weeks)">
                       Flexible (2+ weeks)
                     </option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Budget Range
                   </label>
                   <select
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 text-black focus:border-transparent"
                     {...register("budget")}
                   >
-                    <option value="">Select budget range</option>
-                    <option value="Under ₦50,000">Under ₦50,000</option>
-                    <option value="₦50,000 - ₦100,000">
+                    <option className="text-[#333]" value="">
+                      Select budget range
+                    </option>
+                    <option className="text-[#333]" value="Under ₦50,000">
+                      Under ₦50,000
+                    </option>
+                    <option className="text-[#333]" value="₦50,000 - ₦100,000">
                       ₦50,000 - ₦100,000
                     </option>
-                    <option value="₦100,000 - ₦500,000">
+                    <option className="text-[#333]" value="₦100,000 - ₦500,000">
                       ₦100,000 - ₦500,000
                     </option>
-                    <option value="₦500,000+">₦500,000+</option>
+                    <option className="text-[#333]" value="₦500,000+">
+                      ₦500,000+
+                    </option>
                   </select>
                 </div>
               </div>
 
               <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Project Details *
                 </label>
                 <textarea
                   rows={4}
-                  className={`w-full px-4 py-3 border ${
+                  className={`w-full px-4 py-3 border text-gray-900 ${
                     errors.projectDetails ? "border-red-500" : "border-gray-300"
                   } rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent`}
                   placeholder="Please describe your project requirements, quantities, specifications, etc."
@@ -341,7 +355,7 @@ Budget: ${data.budget || "Not specified"}`;
               </div>
 
               <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-900 mb-2">
                   Upload Files (Optional)
                 </label>
                 <div
