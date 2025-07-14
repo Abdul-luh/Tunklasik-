@@ -8,11 +8,13 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { useQuoteModal } from "@/context/QuoteModalContext";
 
 export default function ServicesSection() {
   const [expandedServices, setExpandedServices] = React.useState<
     Record<number, boolean>
   >({});
+  const { openQuoteModal } = useQuoteModal();
 
   const toggleService = (index: number) => {
     setExpandedServices((prev) => ({
@@ -139,7 +141,10 @@ export default function ServicesSection() {
               amazing together. Get a free quote today and experience the
               difference.
             </p>
-            <button className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors font-semibold">
+            <button
+              onClick={openQuoteModal}
+              className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors font-semibold"
+            >
               Get Free Quote
             </button>
           </div>

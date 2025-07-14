@@ -1,7 +1,11 @@
+"use client";
+import { useQuoteModal } from "@/context/QuoteModalContext";
 import { BookOpen, Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 
 export default function Footer() {
+  const { openQuoteModal } = useQuoteModal();
+
   return (
     <footer className="bg-gray-800 text-white py-16">
       <div className="container mx-auto px-4">
@@ -101,7 +105,7 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-teal-400" />
                 <span className="text-sm">
-                  Off Ogbomoso Bus Stop, Ogbomoso, Oyo State
+                  21 awoseyin street Odunlade off onipanu bus stop Shomolu{" "}
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -118,7 +122,10 @@ export default function Footer() {
               </div>
             </div>
             <div className="mt-6">
-              <button className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+              <button
+                onClick={openQuoteModal}
+                className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors"
+              >
                 Get Quote Now
               </button>
             </div>

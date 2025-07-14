@@ -2,9 +2,11 @@
 
 import { BookOpen, Menu, X } from "lucide-react";
 import React, { useState } from "react";
+import { useQuoteModal } from "@/context/QuoteModalContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { openQuoteModal } = useQuoteModal();
 
   const navLinks = [
     { href: "#about", label: "About Us" },
@@ -35,12 +37,12 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
+            <button
+              onClick={openQuoteModal}
               className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors"
             >
               Request a Quote
-            </a>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -68,18 +70,20 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className="text-gray-800 hover:text-teal-600 transition-colors block py-2 w-full"
-                  onClick={() => setIsMenuOpen(false)} // Close menu on click
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#contact"
+              <button
+                onClick={() => {
+                  openQuoteModal();
+                  setIsMenuOpen(false);
+                }}
                 className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors w-full text-center mt-2"
-                onClick={() => setIsMenuOpen(false)} // Close menu on click
               >
                 Request a Quote
-              </a>
+              </button>
             </nav>
           </div>
         )}

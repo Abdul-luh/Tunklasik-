@@ -68,10 +68,6 @@ export default function About() {
                 </div>
               ))}
             </div>
-
-            <button className="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition-colors font-semibold">
-              Learn More About Us
-            </button>
           </div>
 
           <div className="lg:pl-8">
