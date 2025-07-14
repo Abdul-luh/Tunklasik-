@@ -114,7 +114,7 @@ Budget: ${data.budget || "Not specified"}`;
               </label>
               <input
                 type="text"
-                className={`w-full px-4 py-3 border text-black ${
+                className={`w-full px-4 py-3 border text-gray-900 ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 } rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent`}
                 placeholder="Enter your full name"

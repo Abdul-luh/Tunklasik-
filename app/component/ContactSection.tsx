@@ -161,7 +161,7 @@ export default function ContactSection() {
                 <input
                   type="text"
                   {...register("fullName")}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full px-4 py-3 border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                   placeholder="Enter your full name"
                 />
                 {errors.fullName && (
@@ -178,7 +178,7 @@ export default function ContactSection() {
                 <input
                   type="email"
                   {...register("email")}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full px-4 py-3 border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                   placeholder="Enter your email address"
                 />
                 {errors.email && (
@@ -195,7 +195,7 @@ export default function ContactSection() {
                 <input
                   type="tel"
                   {...register("phone")}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full px-4 py-3 border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                   placeholder="Enter your phone number"
                 />
                 {errors.phone && (
@@ -211,7 +211,7 @@ export default function ContactSection() {
                 </label>
                 <select
                   {...register("service")}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full px-4 py-3 border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                 >
                   <option value="">Select a service</option>
                   <option value="book-work">Book Work Printing</option>
@@ -234,7 +234,7 @@ export default function ContactSection() {
                 <textarea
                   {...register("message")}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full px-4 py-3 border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                   placeholder="Please describe your printing project, including quantity, timeline, and any specific requirements..."
                 />
                 {errors.message && (

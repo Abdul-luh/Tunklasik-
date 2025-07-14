@@ -9,19 +9,11 @@ import {
 import Image from "next/image";
 import React from "react";
 import { useQuoteModal } from "@/context/QuoteModalContext";
+import { useRouter } from "next/navigation";
 
 export default function ServicesSection() {
-  const [expandedServices, setExpandedServices] = React.useState<
-    Record<number, boolean>
-  >({});
   const { openQuoteModal } = useQuoteModal();
-
-  const toggleService = (index: number) => {
-    setExpandedServices((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
+  const router = useRouter();
 
   const services = [
     {
@@ -32,6 +24,7 @@ export default function ServicesSection() {
       additionalInfo:
         "We offer perfect binding, saddle stitching, and hardcover options for books of all sizes. Our printing process ensures vibrant colors and crisp text reproduction.",
       image: "/images/newspaper-print.jpg",
+      gallerySlug: "book-printing",
     },
     {
       icon: <Layers className="w-12 h-12 text-teal-600" />,
@@ -41,6 +34,7 @@ export default function ServicesSection() {
       additionalInfo:
         "Choose from gloss, matte, or satin lamination to add a sleek touch or superior protection for documents, menus, and posters.",
       image: "/images/Lamination.jpg",
+      gallerySlug: "lamination",
     },
     {
       icon: <ShoppingBag className="w-12 h-12 text-teal-600" />,
@@ -50,6 +44,7 @@ export default function ServicesSection() {
       additionalInfo:
         "We provide various sizes, colors, and finishes, including kraft, gloss, or matte, with options for custom printing and handles.",
       image: "/images/paper-bags.jpg",
+      gallerySlug: "paper-bags",
     },
     {
       icon: <Package className="w-12 h-12 text-teal-600" />,
@@ -59,8 +54,13 @@ export default function ServicesSection() {
       additionalInfo:
         "From sturdy cartons to branded labels and tissue paper, we tailor packaging to protect your products and boost brand appeal.",
       image: "/images/packaging-materials.jpg",
+      gallerySlug: "packaging-materials",
     },
   ];
+
+  const handleViewGallery = (gallerySlug: string) => {
+    router.push(`/gallery/${gallerySlug}`);
+  };
 
   return (
     <section id="services" className="py-20 bg-gray-50">
@@ -91,7 +91,6 @@ export default function ServicesSection() {
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
-                {/* <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 hover:bg-opacity-10"></div> */}
 
                 {/* Icon overlay */}
                 <div className="absolute top-4 left-4 bg-white bg-opacity-90 backdrop-blur-sm rounded-full p-3">
@@ -108,23 +107,12 @@ export default function ServicesSection() {
                   {service.description}
                 </p>
 
-                {expandedServices[index] && (
-                  <div className="mt-4 text-gray-600 text-sm">
-                    <p>{service.additionalInfo}</p>
-                    {/* Optional: Add more details here */}
-                  </div>
-                )}
-
                 <button
-                  onClick={() => toggleService(index)}
+                  onClick={() => handleViewGallery(service.gallerySlug)}
                   className="text-teal-600 font-semibold hover:text-teal-700 flex items-center gap-2 transition-colors duration-200"
                 >
-                  {expandedServices[index] ? "Show Less" : "Learn More"}
-                  <ArrowRight
-                    className={`w-4 h-4 transition-transform ${
-                      expandedServices[index] ? "rotate-90" : ""
-                    }`}
-                  />{" "}
+                  View Gallery
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>

@@ -49,14 +49,7 @@ export default function Footer() {
                   Services
                 </a>
               </li>
-              <li>
-                <a
-                  href="#portfolio"
-                  className="hover:text-white transition-colors"
-                >
-                  Portfolio
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#contact"
