@@ -96,33 +96,41 @@ export default function QuoteModal() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
-  const onSubmit = (data: QuoteFormData) => {
-    // Create WhatsApp message
-    const whatsappMessage = `Hi! I'd like to request a quote for ${
-      data.service
-    }. 
-    
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-Service: ${data.service}
-Project Details: ${data.projectDetails}
-Timeline: ${data.timeline || "Not specified"}
-Budget: ${data.budget || "Not specified"}${
-      selectedFiles.length > 0
-        ? `\nFiles attached: ${selectedFiles
-            .map((f) => f.name)
-            .join(", ")} (Note: Files need to be sent separately)`
-        : ""
-    }`;
-    // `https://wa.me/2348023450305?text=${encodeURIComponent(whatsappMessage)}`
+  const onSubmit = async (data: QuoteFormData) => {
+    try {
+      // Create FormData to send files
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("service", data.service);
+      formData.append("projectDetails", data.projectDetails);
+      formData.append("timeline", data.timeline || "");
+      formData.append("budget", data.budget || "");
 
-    window.open(
-      `https://wa.me/2347033824496?text=${encodeURIComponent(whatsappMessage)}`
-    );
-    closeQuoteModal();
-    reset();
-    setSelectedFiles([]);
+      // Append all files
+      selectedFiles.forEach((file, index) => {
+        formData.append(`files[${index}]`, file);
+      });
+
+      // Send to your backend API
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("Quote request sent successfully!");
+        closeQuoteModal();
+        reset();
+        setSelectedFiles([]);
+      } else {
+        throw new Error("Failed to send quote request");
+      }
+    } catch (error) {
+      console.error("Error sending quote:", error);
+      alert("Failed to send quote request. Please try again.");
+    }
   };
 
   const handleEmailSubmit = (data: QuoteFormData) => {
@@ -145,6 +153,32 @@ Budget: ${data.budget || "Not specified"}${
       }`
     );
     window.location.href = `mailto:tunklasik2133@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+  };
+
+  const handleWhatsAppSubmit = (data: QuoteFormData) => {
+    // Create WhatsApp message
+    const whatsappMessage = `Hi! I'd like to request a quote for ${
+      data.service
+    }. 
+      
+  Name: ${data.name}
+  Email: ${data.email}
+  Phone: ${data.phone}
+  Service: ${data.service}
+  Project Details: ${data.projectDetails}
+  Timeline: ${data.timeline || "Not specified"}
+  Budget: ${data.budget || "Not specified"}${
+      selectedFiles.length > 0
+        ? `\nFiles to be shared: ${selectedFiles
+            .map((f) => f.name)
+            .join(", ")} (I'll send these separately)`
+        : ""
+    }`;
+
+    window.open(
+      // `https://wa.me/2348023450305?text=${encodeURIComponent(whatsappMessage)}`
+      `https://wa.me/2347033824496?text=${encodeURIComponent(whatsappMessage)}`
+    );
   };
 
   const resetForm = () => {
@@ -388,7 +422,15 @@ Budget: ${data.budget || "Not specified"}${
               disabled={isSubmitting}
               className="flex-1 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors font-semibold disabled:opacity-70"
             >
-              {isSubmitting ? "Sending..." : "Send via WhatsApp"}
+              {isSubmitting ? "Sending..." : "Submit Quote Request"}
+            </button>
+            <button
+              type="button"
+              onClick={handleSubmit(handleWhatsAppSubmit)}
+              disabled={isSubmitting}
+              className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold disabled:opacity-70"
+            >
+              Send via WhatsApp
             </button>
             <button
               type="button"
