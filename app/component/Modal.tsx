@@ -1,10 +1,6 @@
 "use client";
-import {
-  X,
-  Upload,
-  // MessageCircle
-} from "lucide-react";
-import React from "react";
+import { X, Upload, FileText, Trash2 } from "lucide-react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -21,13 +17,13 @@ const quoteSchema = z.object({
     .min(10, "Project details must be at least 10 characters"),
   timeline: z.string().optional(),
   budget: z.string().optional(),
-  files: z.any().optional(),
 });
 
 type QuoteFormData = z.infer<typeof quoteSchema>;
 
 export default function QuoteModal() {
   const { showQuoteModal, closeQuoteModal } = useQuoteModal();
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   const {
     register,
@@ -56,6 +52,50 @@ export default function QuoteModal() {
     "Other",
   ];
 
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+
+    // Validate file size (10MB limit)
+    const validFiles = files.filter((file) => {
+      if (file.size > 10 * 1024 * 1024) {
+        alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+        return false;
+      }
+      return true;
+    });
+
+    // Validate file types
+    const allowedTypes = [
+      "application/pdf",
+      "image/jpeg",
+      "image/jpg",
+      "image/png",
+    ];
+    const typeValidFiles = validFiles.filter((file) => {
+      if (!allowedTypes.includes(file.type)) {
+        alert(
+          `File ${file.name} is not supported. Please use PDF, JPG, or PNG files.`
+        );
+        return false;
+      }
+      return true;
+    });
+
+    setSelectedFiles((prev) => [...prev, ...typeValidFiles]);
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  };
+
   const onSubmit = (data: QuoteFormData) => {
     // Create WhatsApp message
     const whatsappMessage = `Hi! I'd like to request a quote for ${
@@ -68,13 +108,21 @@ Phone: ${data.phone}
 Service: ${data.service}
 Project Details: ${data.projectDetails}
 Timeline: ${data.timeline || "Not specified"}
-Budget: ${data.budget || "Not specified"}`;
+Budget: ${data.budget || "Not specified"}${
+      selectedFiles.length > 0
+        ? `\nFiles attached: ${selectedFiles
+            .map((f) => f.name)
+            .join(", ")} (Note: Files need to be sent separately)`
+        : ""
+    }`;
+    // `https://wa.me/2348023450305?text=${encodeURIComponent(whatsappMessage)}`
 
     window.open(
-      `https://wa.me/2348023450305?text=${encodeURIComponent(whatsappMessage)}`
+      `https://wa.me/2347033824496?text=${encodeURIComponent(whatsappMessage)}`
     );
     closeQuoteModal();
     reset();
+    setSelectedFiles([]);
   };
 
   const handleEmailSubmit = (data: QuoteFormData) => {
@@ -86,9 +134,23 @@ Budget: ${data.budget || "Not specified"}`;
         data.projectDetails
       }\nTimeline: ${data.timeline || "Not specified"}\nBudget: ${
         data.budget || "Not specified"
+      }${
+        selectedFiles.length > 0
+          ? `\n\nFiles to be attached: ${selectedFiles
+              .map((f) => f.name)
+              .join(
+                ", "
+              )}\n(Note: Please attach these files manually to your email)`
+          : ""
       }`
     );
     window.location.href = `mailto:tunklasik2133@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+  };
+
+  const resetForm = () => {
+    reset();
+    setSelectedFiles([]);
+    closeQuoteModal();
   };
 
   if (!showQuoteModal) return null;
@@ -99,7 +161,7 @@ Budget: ${data.budget || "Not specified"}`;
         <div className="flex justify-between items-center p-6 border-b border-gray-200">
           <h3 className="text-2xl font-bold text-gray-800">Request a Quote</h3>
           <button
-            onClick={closeQuoteModal}
+            onClick={resetForm}
             className="text-gray-400 hover:text-gray-600 transition-colors"
           >
             <X className="w-6 h-6" />
@@ -273,7 +335,7 @@ Budget: ${data.budget || "Not specified"}`;
                 Drag and drop files here or click to browse
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                PDF, JPG, PNG up to 10MB
+                PDF, JPG, PNG up to 10MB each
               </p>
               <input
                 type="file"
@@ -281,9 +343,43 @@ Budget: ${data.budget || "Not specified"}`;
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="hidden"
                 id="file-upload"
-                {...register("files")}
+                onChange={handleFileSelect}
               />
             </div>
+
+            {/* Display selected files */}
+            {selectedFiles.length > 0 && (
+              <div className="mt-4 space-y-2">
+                <h4 className="text-sm font-medium text-gray-900">
+                  Selected Files:
+                </h4>
+                {selectedFiles.map((file, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between bg-gray-50 p-3 rounded-lg"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <FileText className="w-5 h-5 text-gray-500" />
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">
+                          {file.name}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {formatFileSize(file.size)}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeFile(index)}
+                      className="text-red-500 hover:text-red-700 transition-colors"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
