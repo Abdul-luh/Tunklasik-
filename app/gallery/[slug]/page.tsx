@@ -7,270 +7,465 @@ import { useQuoteModal } from "@/context/QuoteModalContext";
 // Mock data for different service galleries
 const galleryData = {
   "book-printing": {
-    title: "Book Work Printing Gallery",
+    title: "Book Printing Gallery",
     description:
-      "Explore our collection of professionally printed books, from novels to educational materials, showcasing our expertise in binding and print quality.",
+      "From captivating novels and insightful educational textbooks to elegant corporate lookbooks, our book printing gallery is a testament to our mastery of the craft. Explore a diverse range of projects that highlight our precision in various binding techniques, our commitment to vibrant color reproduction, and our passion for creating books that are both beautiful and durable.",
     projects: [
       {
         id: 1,
-        title: "Corporate Annual Report",
+        title: "Prestige Financial Annual Report",
         description:
-          "High-quality perfect binding with glossy cover finish for a leading financial institution.",
+          "A meticulously crafted annual report featuring a lay-flat perfect binding and a scuff-resistant matte laminate cover, ensuring a premium feel and lasting durability.",
         image: "/images/projects/book1.jpg",
-        client: "Financial Corp",
+        client: "Prestige Financial Group",
         date: "December 2024",
-        details: "200 pages, perfect binding, full-color printing",
+        details:
+          "200 pages, 150gsm silk inner, 300gsm matte laminated cover, perfect binding, spot UV on logo",
       },
       {
         id: 2,
-        title: "Children's Storybook Collection",
+        title: "The Magical Forest - Children's Book",
         description:
-          "Vibrant illustrations with durable saddle stitching perfect for young readers.",
+          "A beautifully illustrated children's book with vibrant, non-toxic inks and durable saddle-stitching, designed to withstand the love of little readers.",
         image: "/images/projects/book2.jpg",
-        client: "ABC Publishing",
+        client: "Little Bee Books",
         date: "November 2024",
-        details: "32 pages, saddle stitching, premium paper",
+        details:
+          "32 pages + 4-page cover, 200gsm gloss paper, saddle-stitched, rounded corners for safety",
       },
       {
         id: 3,
-        title: "Academic Textbook Series",
+        title: "University Physics Textbook",
         description:
-          "Professional hardcover binding for educational materials with enhanced durability.",
+          "An essential academic textbook produced with a robust hardcover case binding, designed for heavy use and longevity in an educational environment.",
         image: "/images/projects/book3.jpg",
-        client: "Education Plus",
+        client: "Academic Press Inc.",
         date: "October 2024",
-        details: "450 pages, hardcover, case binding",
+        details:
+          "450 pages, 80gsm offset paper, full-color, section-sewn hardcover case binding",
       },
       {
         id: 4,
-        title: "Recipe Book Collection",
+        title: "Modern Italian Cuisine - Recipe Book",
         description:
-          "Spiral-bound cookbooks with water-resistant coating for kitchen use.",
+          "A user-friendly spiral-bound cookbook that lays flat for easy reference in the kitchen, complete with a water-resistant gloss laminated cover.",
         image: "/images/projects/book4.jpg",
-        client: "Gourmet Kitchen",
+        client: "Gourmet Kitchen Publishing",
         date: "September 2024",
-        details: "120 pages, spiral binding, laminated cover",
+        details:
+          "120 pages, 170gsm silk paper, plastic spiral binding, 300gsm gloss laminated cover",
       },
       {
         id: 5,
-        title: "Photography Portfolio",
+        title: "Urban Landscapes - Photography Portfolio",
         description:
-          "Premium photo book with high-resolution printing and matte finish.",
+          "A stunning lay-flat photography portfolio showcasing high-resolution images on premium matte photo paper, providing a seamless panoramic viewing experience.",
         image: "/images/projects/book5.jpg",
-        client: "Studio Vision",
+        client: "Visionary Studios",
         date: "August 2024",
-        details: "80 pages, lay-flat binding, premium photo paper",
+        details:
+          "80 pages, 250gsm premium matte photo paper, lay-flat binding, custom debossed cover",
       },
       {
         id: 6,
-        title: "Training Manual Series",
+        title: "Corporate Onboarding Manuals",
         description:
-          "Professional training materials with tabbed sections and wire binding.",
+          "Functional and easy-to-navigate training manuals with durable wire-o binding and custom-printed index tabs for quick section referencing.",
         image: "/images/projects/book6.jpg",
-        client: "TechTrain Inc",
+        client: "TechTrain Solutions",
         date: "July 2024",
-        details: "300 pages, wire binding, indexed tabs",
+        details:
+          "300 pages, 100gsm uncoated paper, wire-o binding, 5-part Mylar-coated index tabs",
       },
+      // {
+      //   id: 7,
+      //   title: "Literary Arts Journal - 'The Quill'",
+      //   description:
+      //     "An elegant literary journal featuring a classic design with a textured paper cover and high-quality cream paper for a comfortable reading experience.",
+      //   image: "/images/projects/book7.jpg",
+      //   client: "The Writer's Guild",
+      //   date: "June 2024",
+      //   details:
+      //     "150 pages, 90gsm cream Vellum paper, perfect bound, 280gsm textured card cover",
+      // },
+      // {
+      //   id: 8,
+      //   title: "Poetry Collection: 'Echoes of the City'",
+      //   description:
+      //     "A self-published poetry collection with a minimalist aesthetic, printed on eco-friendly recycled paper, demonstrating our support for independent authors.",
+      //   image: "/images/projects/book8.jpg",
+      //   client: "Jane Doe (Indie Author)",
+      //   date: "May 2024",
+      //   details:
+      //     "96 pages, 100% recycled 120gsm paper, softcover, matte finish",
+      // },
     ],
   },
   lamination: {
-    title: "Lamination Services Gallery",
+    title: "Lamination & Finishing Gallery",
     description:
-      "Discover our premium lamination work that protects and enhances your printed materials with professional finishes.",
+      "Witness the transformative power of professional finishing. Our gallery showcases how lamination can elevate printed materials, providing superior protection, enhancing color vibrancy, and adding a premium tactile quality to everything from menus and business cards to book covers and presentation folders.",
     projects: [
       {
         id: 1,
         title: "Restaurant Menu Collection",
         description:
-          "Gloss lamination for durability and easy cleaning in high-traffic dining environments.",
+          "Durable and vibrant restaurant menus with a high-gloss lamination, making them spill-resistant and easy to clean for a busy dining environment.",
         image: "/images/projects/lamination1.jpg",
-        client: "Bistro Delight",
+        client: "The Grand Bistro",
         date: "December 2024",
-        details: "A4 size, gloss lamination, 250gsm paper",
+        details:
+          "A4 Trifold, 350gsm card, double-sided gloss lamination, creased",
       },
       {
         id: 2,
-        title: "Corporate ID Cards",
+        title: "Executive ID Cards",
         description:
-          "Professional matte lamination for employee identification cards with security features.",
+          "Sleek corporate ID cards with a non-reflective matte lamination and embedded security features for a professional and secure solution.",
         image: "/images/projects/lamination2.jpg",
-        client: "Corporate Solutions",
+        client: "Global Tech Inc.",
         date: "November 2024",
-        details: "CR80 size, matte lamination, UV printing",
+        details:
+          "CR80 PVC, matte lamination, hologram overlay, QR code integration",
       },
       {
         id: 3,
-        title: "Educational Posters",
+        title: "Classroom Learning Posters",
         description:
-          "Protective lamination for classroom posters ensuring long-lasting educational materials.",
+          "Tear-resistant and wipeable educational posters with a protective satin lamination, ensuring they last for years in a classroom setting.",
         image: "/images/projects/lamination3.jpg",
-        client: "Greenfield School",
+        client: "Bright Minds Academy",
         date: "October 2024",
-        details: "A1 size, satin lamination, full-color printing",
+        details:
+          "A1 size, 170gsm poster paper, satin matte lamination, UV resistant",
       },
       {
         id: 4,
-        title: "Product Price Lists",
+        title: "Retail Price & Spec Lists",
         description:
-          "Durable lamination for retail price displays with easy-to-clean surfaces.",
+          "Hard-wearing, waterproof price lists for a retail environment, featuring a thick gloss lamination for maximum durability and readability.",
         image: "/images/projects/lamination4.jpg",
-        client: "Retail Pro",
+        client: "Gadget World",
         date: "September 2024",
-        details: "A3 size, gloss lamination, waterproof",
+        details:
+          "A3 size, 250gsm silk, heavy-duty gloss lamination, waterproof sealed edges",
       },
       {
         id: 5,
-        title: "Safety Instruction Cards",
+        title: "Workshop Safety Instructions",
         description:
-          "Industrial-grade lamination for workplace safety materials requiring frequent handling.",
+          "Industrial-grade laminated safety cards designed for frequent handling in a workshop setting, resistant to grease, water, and tearing.",
         image: "/images/projects/lamination5.jpg",
-        client: "Safety First Ltd",
+        client: "Forge & Steel Co.",
         date: "August 2024",
-        details: "A5 size, heavy-duty lamination, tear-resistant",
+        details:
+          "A5 size, 400gsm card, encapsulated heavy-duty matte lamination",
       },
       {
         id: 6,
-        title: "Event Signage",
+        title: "Outdoor Festival Signage",
         description:
-          "Weather-resistant lamination for outdoor event displays and directional signage.",
+          "Weather-proof and fade-resistant outdoor event signage, protected with a UV-resistant lamination to withstand the elements.",
         image: "/images/projects/lamination6.jpg",
-        client: "Event Masters",
+        client: "Summer Fest Events",
         date: "July 2024",
-        details: "Various sizes, outdoor lamination, UV resistant",
+        details:
+          "Various sizes on Foamex board, outdoor-grade gloss lamination",
       },
+      // {
+      //   id: 7,
+      //   title: "Luxury Business Cards",
+      //   description:
+      //     "Premium business cards featuring a velvety soft-touch (velvet) lamination and spot UV highlights, creating a memorable first impression.",
+      //   image: "/images/projects/lamination7.jpg",
+      //   client: "Maven Design Studio",
+      //   date: "June 2024",
+      //   details: "85x55mm, 450gsm card, soft-touch lamination, spot UV gloss",
+      // },
+      // {
+      //   id: 8,
+      //   title: "Presentation Folders",
+      //   description:
+      //     "Professionally finished A4 presentation folders with an anti-scuff matte lamination, providing a sophisticated look for corporate documents.",
+      //   image: "/images/projects/lamination8.jpg",
+      //   client: "Innovate Corp",
+      //   date: "May 2024",
+      //   details:
+      //     "A4+ size, 350gsm card, matte lamination, die-cut with capacity",
+      // },
     ],
   },
   "paper-bags": {
-    title: "Paper Bags Gallery",
+    title: "Custom Branded Paper Bags",
     description:
-      "Browse our eco-friendly paper bag designs, from retail shopping bags to promotional packaging solutions.",
+      "More than just a bag, it's a mobile billboard for your brand. Browse our collection of custom paper bags that blend style with functionality. From luxurious retail bags with foil stamping to eco-friendly options for green-minded brands, our gallery demonstrates our ability to create packaging that customers love to carry.",
     projects: [
       {
         id: 1,
-        title: "Luxury Retail Bags",
+        title: "Luxury Boutique Bags",
         description:
-          "Premium kraft paper bags with custom branding and reinforced handles for upscale retail.",
+          "Elegant retail bags crafted from thick, high-quality art card with a matte finish, custom-dyed rope handles, and a stunning gold foil logo.",
         image: "/images/projects/bags1.jpg",
-        client: "Luxury Boutique",
+        client: "Éclat Boutique",
         date: "December 2024",
-        details: "320gsm kraft, rope handles, gold foil logo",
+        details:
+          "350gsm art card, matte lamination, gold foil, reinforced base & turnover",
       },
       {
         id: 2,
-        title: "Event Gift Bags",
+        title: "Corporate Event Gift Bags",
         description:
-          "Colorful paper bags with custom printing for corporate events and celebrations.",
+          "Vibrant, full-color printed gift bags for a corporate summit, featuring brand colors and elegant ribbon handles for a premium feel.",
         image: "/images/projects/bags2.jpg",
-        client: "Event Planners Co",
+        client: "Momentum Planners",
         date: "November 2024",
-        details: "250gsm colored paper, ribbon handles, full-color print",
+        details: "250gsm coated paper, gloss finish, satin ribbon handles",
       },
       {
         id: 3,
-        title: "Restaurant Takeaway Bags",
+        title: "Gourmet Takeaway Bags",
         description:
-          "Grease-resistant paper bags designed for food service with strong construction.",
+          "Sturdy, grease-resistant takeaway bags for a busy restaurant, constructed from food-grade kraft paper with strong, flat tape handles.",
         image: "/images/projects/bags3.jpg",
-        client: "Food Hub",
+        client: "Urban Bites",
         date: "October 2024",
-        details: "Food-grade paper, grease-resistant coating, flat handles",
+        details:
+          "120gsm food-grade kraft paper, grease-resistant, block bottom",
       },
       {
         id: 4,
-        title: "Promotional Shopping Bags",
+        title: "Eco-Friendly Promotional Bags",
         description:
-          "Eco-friendly shopping bags with vibrant brand colors and sustainable messaging.",
+          "Sustainable promotional bags made from 100% recycled paper and printed with water-based inks, perfectly aligning with a green brand's message.",
         image: "/images/projects/bags4.jpg",
-        client: "Green Market",
+        client: "The Organic Market",
         date: "September 2024",
-        details: "Recycled paper, water-based inks, biodegradable",
+        details:
+          "150gsm recycled kraft, water-based inks, twisted paper handles",
       },
       {
         id: 5,
-        title: "Pharmacy Bags",
+        title: "Pharmacy & Healthcare Bags",
         description:
-          "Professional white paper bags with privacy features for healthcare retail.",
+          "Discreet and professional white pharmacy bags with a top fold for patient privacy, printed with clear, compliant branding.",
         image: "/images/projects/bags5.jpg",
-        client: "Health Plus Pharmacy",
+        client: "Well-being Pharmacy",
         date: "August 2024",
-        details: "White kraft, privacy fold, medical-grade printing",
+        details: "100gsm white kraft, privacy fold-over top, flat handles",
       },
       {
         id: 6,
-        title: "Artisan Craft Bags",
+        title: "Artisan Market Craft Bags",
         description:
-          "Handcrafted-style paper bags with natural textures for artisan product packaging.",
+          "Charming, natural-feel paper bags with a textured finish and rustic cotton cord handles, designed to complement handmade artisan products.",
         image: "/images/projects/bags6.jpg",
-        client: "Artisan Collective",
+        client: "The Crafter's Collective",
         date: "July 2024",
-        details: "Textured paper, natural colors, cotton cord handles",
+        details: "170gsm textured paper, cotton handles, unbleached stock",
       },
+      // {
+      //   id: 7,
+      //   title: "Boutique Wine & Bottle Bags",
+      //   description:
+      //     "Tall, reinforced bottle bags with a custom fit, designed to safely carry wine bottles while showcasing the brand with elegant side-gusset printing.",
+      //   image: "/images/projects/bags7.jpg",
+      //   client: "Vintage Vineyards",
+      //   date: "June 2024",
+      //   details: "210gsm card, reinforced handles and base, custom dimensions",
+      // },
+      // {
+      //   id: 8,
+      //   title: "Exhibition & Trade Show Bags",
+      //   description:
+      //     "Large-format bags designed to hold brochures and promotional materials at a trade show, featuring a bold design for maximum brand visibility.",
+      //   image: "/images/projects/bags8.jpg",
+      //   client: "Future Tech Expo",
+      //   date: "May 2024",
+      //   details:
+      //     "A3+ size, 200gsm gloss paper, long rope handles for shoulder carrying",
+      // },
     ],
   },
   "packaging-materials": {
-    title: "Packaging Materials Gallery",
+    title: "Custom Packaging Solutions Gallery",
     description:
-      "Explore our comprehensive packaging solutions including boxes, labels, and custom designs for product protection and branding.",
+      "First impressions are everything. Our packaging gallery reveals how thoughtful design and quality construction can create unforgettable unboxing experiences and protect products in transit. Explore examples of our custom boxes, branded labels, bespoke inserts, and innovative solutions for a wide range of industries.",
     projects: [
       {
         id: 1,
-        title: "E-commerce Shipping Boxes",
+        title: "E-commerce Mailer Boxes",
         description:
-          "Custom-branded corrugated boxes designed for safe product shipping with unboxing experience.",
+          "Durable, custom-sized corrugated mailer boxes designed for a secure fit, featuring an easy-open tear strip and internal printing for a premium unboxing experience.",
         image: "/images/projects/packaging1.jpg",
-        client: "Online Store Pro",
+        client: "Shopify Stars Inc.",
         date: "December 2024",
-        details: "Corrugated cardboard, custom size, 2-color printing",
+        details:
+          "E-flute corrugated board, custom die-cut, 2-color flexo print",
       },
       {
         id: 2,
-        title: "Product Labels Collection",
+        title: "Waterproof Product Labels",
         description:
-          "Waterproof product labels with vibrant colors and durable adhesive for various industries.",
+          "High-tack, waterproof vinyl labels for a beverage company, printed with vibrant, fade-resistant inks to withstand refrigeration and moisture.",
         image: "/images/projects/packaging2.jpg",
-        client: "Manufacturing Plus",
+        client: "AquaPure Drinks",
         date: "November 2024",
-        details: "Vinyl material, waterproof, permanent adhesive",
+        details:
+          "White vinyl stock, permanent adhesive, waterproof, full-color digital print",
       },
       {
         id: 3,
-        title: "Gift Box Series",
+        title: "Luxury Gift Box with Magnetic Closure",
         description:
-          "Premium gift boxes with magnetic closures and custom interior designs for luxury products.",
+          "Exquisite rigid gift boxes for a high-end chocolatier, featuring a smooth matte finish, magnetic snap-shut closure, and a custom-fitted silk-lined interior.",
         image: "/images/projects/packaging3.jpg",
-        client: "Premium Gifts",
+        client: "Le Chocolatier",
         date: "October 2024",
-        details: "Rigid cardboard, magnetic closure, silk lining",
+        details:
+          "1200gsm rigid board, matte lamination, magnetic closure, foil debossing",
       },
       {
         id: 4,
-        title: "Food Packaging Solutions",
+        title: "Food-Safe Container Sleeves",
         description:
-          "Food-safe packaging materials including containers, labels, and sealing solutions.",
+          "Professionally printed and food-safe cardboard sleeves for takeaway food containers, providing essential branding and nutritional information.",
         image: "/images/projects/packaging4.jpg",
-        client: "Gourmet Foods",
+        client: "Fresh & Fast",
         date: "September 2024",
-        details: "Food-grade materials, tamper-evident seals, FDA compliant",
+        details: "300gsm food-grade board, FDA-compliant inks, custom die-cut",
       },
       {
         id: 5,
-        title: "Industrial Packaging",
+        title: "Heavy-Duty Industrial Parts Boxes",
         description:
-          "Heavy-duty packaging solutions for industrial equipment with protective inserts.",
+          "Robust, double-walled corrugated boxes with custom foam inserts, engineered to protect heavy and sensitive industrial components during shipping.",
         image: "/images/projects/packaging5.jpg",
-        client: "Industrial Solutions",
+        client: "Machina Parts Ltd.",
         date: "August 2024",
-        details: "Double-wall corrugated, foam inserts, reinforced corners",
+        details:
+          "Double-wall BC flute board, custom CNC-cut foam inserts, reinforced",
       },
       {
         id: 6,
-        title: "Cosmetic Packaging",
+        title: "Elegant Cosmetics Packaging",
         description:
-          "Elegant packaging for beauty products with sophisticated finishing and branding.",
+          "Sophisticated packaging for a luxury skincare line, utilizing soft-touch coated card, an embossed logo, and spot UV varnish to highlight key design elements.",
         image: "/images/projects/packaging6.jpg",
-        client: "Beauty Brand",
+        client: "Aura Beauty",
         date: "July 2024",
-        details: "Coated cardboard, spot UV, embossed logo",
+        details:
+          "350gsm C1S coated board, soft-touch finish, embossing, spot UV",
+      },
+      {
+        id: 7,
+        title: "Subscription Box Suite",
+        description:
+          "A complete monthly subscription box experience, including a custom-printed mailer box, branded tissue paper, and informational product cards.",
+        image: "/images/projects/packaging7.jpg",
+        client: "Curated Crate Co.",
+        date: "June 2024",
+        details: "Mailer box, custom printed tissue paper, A6 info cards",
+      },
+      {
+        id: 8,
+        title: "Retail Product Hang Tags",
+        description:
+          "Custom-shaped hang tags for a clothing line, printed on thick, uncoated stock with a drilled hole and supplied with natural twine.",
+        image: "/images/projects/packaging8.jpg",
+        client: "Urban Threads Apparel",
+        date: "May 2024",
+        details:
+          "400gsm uncoated card, custom die-cut shape, drilled, full-color",
+      },
+    ],
+  },
+  "custom-printing": {
+    title: "Custom & Bespoke Printing Gallery",
+    description:
+      "Your vision, printed. This gallery highlights our versatility in handling unique and bespoke printing projects. From large-format banners and custom stationery to intricate die-cut flyers and personalized event invitations, we have the technology and expertise to bring any creative idea to life.",
+    projects: [
+      {
+        id: 1,
+        title: "Wedding Invitation Suite",
+        description:
+          "An elegant wedding invitation suite featuring gold foil on heavy cotton paper, complete with matching RSVP cards and custom-printed envelopes.",
+        image: "/images/projects/custom1.jpg",
+        client: "Private Client",
+        date: "December 2024",
+        details:
+          "350gsm cotton paper, gold foil, letterpress, matching envelopes",
+      },
+      {
+        id: 2,
+        title: "Large Format Event Banner",
+        description:
+          "A vibrant, large-format vinyl banner for a product launch event, printed with weather-resistant UV inks and finished with grommets for easy installation.",
+        image: "/images/projects/custom2.jpg",
+        client: "TechLaunch Expo",
+        date: "November 2024",
+        details:
+          "5m x 2m, heavy-duty vinyl, UV-cured inks, hemmed with eyelets",
+      },
+      {
+        id: 3,
+        title: "Die-Cut Marketing Flyers",
+        description:
+          "Creative, custom-shaped marketing flyers for a new cafe, die-cut in the shape of a coffee cup to grab attention and create a lasting impression.",
+        image: "/images/projects/custom3.jpg",
+        client: "The Daily Grind Cafe",
+        date: "October 2024",
+        details: "A5 size, 300gsm silk, custom die-cut, double-sided print",
+      },
+      {
+        id: 4,
+        title: "Branded Office Stationery Set",
+        description:
+          "A complete set of branded office stationery including letterheads, compliment slips, and notepads, all printed on premium, sustainably sourced paper.",
+        image: "/images/projects/custom4.jpg",
+        client: "Apex Legal",
+        date: "September 2024",
+        details: "120gsm FSC-certified paper, offset printing, matching set",
+      },
+      {
+        id: 5,
+        title: "Custom Wall Decals for Office",
+        description:
+          "Large, removable vinyl wall decals for a corporate office space, featuring the company's mission statement and branding elements.",
+        image: "/images/projects/custom5.jpg",
+        client: "Innovate Hub",
+        date: "August 2024",
+        details: "Matte removable vinyl, contour cut, easy-apply adhesive",
+      },
+      {
+        id: 6,
+        title: "Numbered & Perforated Event Tickets",
+        description:
+          "Secure event tickets for a music festival, featuring sequential numbering, a perforated stub for tear-off, and a holographic security foil.",
+        image: "/images/projects/custom6.jpg",
+        client: "SoundWave Festival",
+        date: "July 2024",
+        details: "DL size, 250gsm card, perforation, numbering, security foil",
+      },
+      {
+        id: 7,
+        title: "Saddle-Stitched Product Catalogs",
+        description:
+          "A glossy, full-color product catalog for a furniture retailer, professionally saddle-stitched for a sleek and durable finish.",
+        image: "/images/projects/custom7.jpg",
+        client: "Modern Living",
+        date: "June 2024",
+        details: "48 pages, A4, 150gsm gloss paper, saddle-stitched",
+      },
+      {
+        id: 8,
+        title: "Personalized Desk Calendars",
+        description:
+          "Custom-designed A5 desk calendars for corporate gifting, spiral-bound with a sturdy stand and featuring unique company photos for each month.",
+        image: "/images/projects/custom8.jpg",
+        client: "Synergy Corp",
+        date: "May 2024",
+        details:
+          "A5 size, 200gsm silk paper, wire-o binding, 500gsm board stand",
       },
     ],
   },
@@ -282,7 +477,9 @@ export default function GalleryPage() {
   const { openQuoteModal } = useQuoteModal();
 
   const gallerySlug = params.slug as string;
-  const gallery = galleryData[gallerySlug as keyof typeof galleryData];
+  const gallery = galleryData[gallerySlug as keyof typeof galleryData] as
+    | (typeof galleryData)[keyof typeof galleryData]
+    | undefined;
 
   if (!gallery) {
     return (
