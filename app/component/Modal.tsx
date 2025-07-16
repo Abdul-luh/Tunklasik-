@@ -133,27 +133,27 @@ export default function QuoteModal() {
     }
   };
 
-  const handleEmailSubmit = (data: QuoteFormData) => {
-    const emailSubject = encodeURIComponent("Quote Request - " + data.service);
-    const emailBody = encodeURIComponent(
-      `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${
-        data.phone
-      }\nService: ${data.service}\nProject Details: ${
-        data.projectDetails
-      }\nTimeline: ${data.timeline || "Not specified"}\nBudget: ${
-        data.budget || "Not specified"
-      }${
-        selectedFiles.length > 0
-          ? `\n\nFiles to be attached: ${selectedFiles
-              .map((f) => f.name)
-              .join(
-                ", "
-              )}\n(Note: Please attach these files manually to your email)`
-          : ""
-      }`
-    );
-    window.location.href = `mailto:tunklasik2133@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-  };
+  // const handleEmailSubmit = (data: QuoteFormData) => {
+  //   const emailSubject = encodeURIComponent("Quote Request - " + data.service);
+  //   const emailBody = encodeURIComponent(
+  //     `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${
+  //       data.phone
+  //     }\nService: ${data.service}\nProject Details: ${
+  //       data.projectDetails
+  //     }\nTimeline: ${data.timeline || "Not specified"}\nBudget: ${
+  //       data.budget || "Not specified"
+  //     }${
+  //       selectedFiles.length > 0
+  //         ? `\n\nFiles to be attached: ${selectedFiles
+  //             .map((f) => f.name)
+  //             .join(
+  //               ", "
+  //             )}\n(Note: Please attach these files manually to your email)`
+  //         : ""
+  //     }`
+  //   );
+  //   window.location.href = `mailto:tunklasik2133@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+  // };
 
   const handleWhatsAppSubmit = (data: QuoteFormData) => {
     // Create WhatsApp message
@@ -167,17 +167,19 @@ export default function QuoteModal() {
   Service: ${data.service}
   Project Details: ${data.projectDetails}
   Timeline: ${data.timeline || "Not specified"}
-  Budget: ${data.budget || "Not specified"}${
-      selectedFiles.length > 0
-        ? `\nFiles to be shared: ${selectedFiles
-            .map((f) => f.name)
-            .join(", ")} (I'll send these separately)`
-        : ""
-    }`;
+  Budget: ${data.budget || "Not specified"}
+  ${
+    selectedFiles.length > 0
+      ? `\nFiles to be shared: ${selectedFiles
+          .map((f) => f.name)
+          .join(", ")} (I'll send these separately)`
+      : ""
+  }
+    `;
 
     window.open(
-      // `https://wa.me/2348023450305?text=${encodeURIComponent(whatsappMessage)}`
-      `https://wa.me/2347033824496?text=${encodeURIComponent(whatsappMessage)}`
+      `https://wa.me/2348023450305?text=${encodeURIComponent(whatsappMessage)}`
+      // `https://wa.me/2347033824496?text=${encodeURIComponent(whatsappMessage)}`
     );
   };
 
@@ -417,13 +419,13 @@ export default function QuoteModal() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <button
+            {/* <button
               type="submit"
               disabled={isSubmitting}
               className="flex-1 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors font-semibold disabled:opacity-70"
             >
               {isSubmitting ? "Sending..." : "Submit Quote Request"}
-            </button>
+            </button> */}
             <button
               type="button"
               onClick={handleSubmit(handleWhatsAppSubmit)}
@@ -432,14 +434,14 @@ export default function QuoteModal() {
             >
               Send via WhatsApp
             </button>
-            <button
+            {/* <button
               type="button"
               onClick={handleSubmit(handleEmailSubmit)}
               disabled={isSubmitting}
               className="flex-1 bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors font-semibold disabled:opacity-70"
             >
               Send via Email
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
