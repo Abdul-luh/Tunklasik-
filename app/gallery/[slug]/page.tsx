@@ -356,27 +356,27 @@ const galleryData = {
         details:
           "350gsm C1S coated board, soft-touch finish, embossing, spot UV",
       },
-      {
-        id: 7,
-        title: "Subscription Box Suite",
-        description:
-          "A complete monthly subscription box experience, including a custom-printed mailer box, branded tissue paper, and informational product cards.",
-        image: "/images/projects/packaging7.jpg",
-        client: "Curated Crate Co.",
-        date: "June 2024",
-        details: "Mailer box, custom printed tissue paper, A6 info cards",
-      },
-      {
-        id: 8,
-        title: "Retail Product Hang Tags",
-        description:
-          "Custom-shaped hang tags for a clothing line, printed on thick, uncoated stock with a drilled hole and supplied with natural twine.",
-        image: "/images/projects/packaging8.jpg",
-        client: "Urban Threads Apparel",
-        date: "May 2024",
-        details:
-          "400gsm uncoated card, custom die-cut shape, drilled, full-color",
-      },
+      // {
+      //   id: 7,
+      //   title: "Subscription Box Suite",
+      //   description:
+      //     "A complete monthly subscription box experience, including a custom-printed mailer box, branded tissue paper, and informational product cards.",
+      //   image: "/images/projects/packaging7.jpg",
+      //   client: "Curated Crate Co.",
+      //   date: "June 2024",
+      //   details: "Mailer box, custom printed tissue paper, A6 info cards",
+      // },
+      // {
+      //   id: 8,
+      //   title: "Retail Product Hang Tags",
+      //   description:
+      //     "Custom-shaped hang tags for a clothing line, printed on thick, uncoated stock with a drilled hole and supplied with natural twine.",
+      //   image: "/images/projects/packaging8.jpg",
+      //   client: "Urban Threads Apparel",
+      //   date: "May 2024",
+      //   details:
+      //     "400gsm uncoated card, custom die-cut shape, drilled, full-color",
+      // },
     ],
   },
   "custom-printing": {
