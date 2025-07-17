@@ -1,5 +1,10 @@
 "use client";
-import { X, Upload, FileText, Trash2 } from "lucide-react";
+import {
+  X,
+  // Upload,
+  // FileText,
+  // Trash2
+} from "lucide-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -52,49 +57,49 @@ export default function QuoteModal() {
     "Other",
   ];
 
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
+  // const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const files = Array.from(event.target.files || []);
 
-    // Validate file size (10MB limit)
-    const validFiles = files.filter((file) => {
-      if (file.size > 10 * 1024 * 1024) {
-        alert(`File ${file.name} is too large. Maximum size is 10MB.`);
-        return false;
-      }
-      return true;
-    });
+  //   // Validate file size (10MB limit)
+  //   const validFiles = files.filter((file) => {
+  //     if (file.size > 10 * 1024 * 1024) {
+  //       alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+  //       return false;
+  //     }
+  //     return true;
+  //   });
 
-    // Validate file types
-    const allowedTypes = [
-      "application/pdf",
-      "image/jpeg",
-      "image/jpg",
-      "image/png",
-    ];
-    const typeValidFiles = validFiles.filter((file) => {
-      if (!allowedTypes.includes(file.type)) {
-        alert(
-          `File ${file.name} is not supported. Please use PDF, JPG, or PNG files.`
-        );
-        return false;
-      }
-      return true;
-    });
+  //   // Validate file types
+  //   const allowedTypes = [
+  //     "application/pdf",
+  //     "image/jpeg",
+  //     "image/jpg",
+  //     "image/png",
+  //   ];
+  //   const typeValidFiles = validFiles.filter((file) => {
+  //     if (!allowedTypes.includes(file.type)) {
+  //       alert(
+  //         `File ${file.name} is not supported. Please use PDF, JPG, or PNG files.`
+  //       );
+  //       return false;
+  //     }
+  //     return true;
+  //   });
 
-    setSelectedFiles((prev) => [...prev, ...typeValidFiles]);
-  };
+  //   setSelectedFiles((prev) => [...prev, ...typeValidFiles]);
+  // };
 
-  const removeFile = (index: number) => {
-    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
-  };
+  // const removeFile = (index: number) => {
+  //   setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+  // };
 
-  const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const sizes = ["Bytes", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
-  };
+  // const formatFileSize = (bytes: number) => {
+  //   if (bytes === 0) return "0 Bytes";
+  //   const k = 1024;
+  //   const sizes = ["Bytes", "KB", "MB", "GB"];
+  //   const i = Math.floor(Math.log(bytes) / Math.log(k));
+  //   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  // };
 
   const onSubmit = async (data: QuoteFormData) => {
     try {
@@ -358,7 +363,7 @@ export default function QuoteModal() {
             )}
           </div>
 
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <label className="block text-sm font-medium text-gray-900 mb-2">
               Upload Files (Optional)
             </label>
@@ -383,7 +388,7 @@ export default function QuoteModal() {
               />
             </div>
 
-            {/* Display selected files */}
+            //  Display selected files 
             {selectedFiles.length > 0 && (
               <div className="mt-4 space-y-2">
                 <h4 className="text-sm font-medium text-gray-900">
@@ -416,7 +421,7 @@ export default function QuoteModal() {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
             {/* <button
