@@ -3,6 +3,7 @@ import { ArrowLeft, ExternalLink, Calendar, User } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useParams } from "next/navigation";
 import { useQuoteModal } from "@/context/QuoteModalContext";
+import QuoteModal from "@/app/component/Modal";
 
 // Mock data for different service galleries
 const galleryData = {
@@ -504,6 +505,7 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <QuoteModal />
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-6">
