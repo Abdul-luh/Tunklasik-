@@ -24,8 +24,8 @@ export default function About() {
   ];
 
   const stats = [
-    { number: "500+", label: "Projects Completed" },
-    { number: "5+", label: "Years Experience" },
+    { number: "10,000+", label: "Projects Completed" },
+    { number: "20+", label: "Years Experience" },
     { number: "24/7", label: "Customer Support" },
   ];
 
